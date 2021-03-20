@@ -8,6 +8,7 @@ const listingsReducer = (state = [], action) => {
             return state;
     }
 };
+
 export const initListings = () => {
     return async dispatch => {
        const listings = await listingsService.getAll(); 
@@ -17,4 +18,5 @@ export const initListings = () => {
        });
     };
 };
+
 export default listingsReducer;
