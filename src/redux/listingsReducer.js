@@ -4,6 +4,8 @@ const listingsReducer = (state = [], action) => {
     switch (action.type) {
         case 'INIT_LISTINGS':
             return action.data;
+        case 'ADD_LISTING':
+            return [...state, action.data];
         default:
             return state;
     }
@@ -17,6 +19,16 @@ export const initListings = () => {
            data: listings,
        });
     };
+};
+
+export const addListing = (name, age) => {
+    return async dispatch => {
+        const listing = await listingsService.addListing(name, age);
+        dispatch({
+            type: 'ADD_LISTING',
+            data: listing
+        })
+    }
 };
 
 export default listingsReducer;

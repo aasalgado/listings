@@ -17,6 +17,15 @@ const getAll = () => {
     return mockData;
 };
 
+const addListing = (name, age) => {
+    const listing = {
+        name,
+        age,
+    };
+    return listing;
+}
+
 export default {
     getAll,
+    addListing,
 };
