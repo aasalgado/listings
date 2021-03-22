@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { initListings, addListing } from './redux/listingsReducer';
+import { initListings, addListing, deleteListing } from './redux/listingsReducer';
 
 const SubmitListing = () => {
     const [name, setName] = useState();
@@ -9,8 +9,7 @@ const SubmitListing = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
-      // e.preventDefault();
-      console.log('hello');
+      e.preventDefault();
       dispatch(addListing(name, age));
     }
 
@@ -34,14 +33,19 @@ const SubmitListing = () => {
 function App() {
   const dispatch = useDispatch();
   const listings = useSelector((state) => state.listings)
-  
+  const removeListing = (listingName) => {
+    dispatch(deleteListing(listingName));
+  }
+
   useEffect(() => {
     dispatch(initListings());
   }, [dispatch]);
   return (
     <div className="App">
       {listings.map((listing) => (
-        <p>{listing.name}, {listing.age}</p>
+        <p>{listing.name}, {listing.age} 
+        | <span onClick={() => removeListing(listing.name)}>(X)</span>
+        </p>
       ))}
       <SubmitListing />
     </div>

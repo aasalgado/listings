@@ -6,6 +6,8 @@ const listingsReducer = (state = [], action) => {
             return action.data;
         case 'ADD_LISTING':
             return [...state, action.data];
+        case 'DELETE_LISTING':
+            return state.filter(listing => listing.name !== action.data);
         default:
             return state;
     }
@@ -27,6 +29,16 @@ export const addListing = (name, age) => {
         dispatch({
             type: 'ADD_LISTING',
             data: listing
+        })
+    }
+};
+
+export const deleteListing = (listingName) => {
+    return async dispatch => {
+        // here is where you would call service to delete from database
+        dispatch({
+            type: 'REMOVE_LISTING',
+            data: listingName
         })
     }
 };
