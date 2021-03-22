@@ -34,6 +34,7 @@ function App() {
   const dispatch = useDispatch();
   const listings = useSelector((state) => state.listings)
   const removeListing = (listingName) => {
+    console.log('click');
     dispatch(deleteListing(listingName));
   }
 

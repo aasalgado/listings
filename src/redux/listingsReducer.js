@@ -6,7 +6,7 @@ const listingsReducer = (state = [], action) => {
             return action.data;
         case 'ADD_LISTING':
             return [...state, action.data];
-        case 'DELETE_LISTING':
+        case 'REMOVE_LISTING':
             return state.filter(listing => listing.name !== action.data);
         default:
             return state;
