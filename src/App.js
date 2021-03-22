@@ -9,7 +9,7 @@ const SubmitListing = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       console.log('hello');
       dispatch(addListing(name, age));
     }
